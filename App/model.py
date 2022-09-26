@@ -25,6 +25,7 @@
  """
 
 
+from gettext import Catalog
 import config as cf
 from DISClib.ADT import list as lt
 from DISClib.ADT import map as mp
@@ -120,10 +121,12 @@ def newCatalog():
     La columna 'titles' del archivo books.csv
     """
     # TODO lab 6, agregar el ADT map con newMap()
-    catalog['titles'] = None
+    catalog['titles'] = mp.newMap(40,
+                                 maptype='PROBING',
+                                 loadfactor=0.5,
+                                 comparefunction=compareTitles)
 
     return catalog
-
 
 # Funciones para creacion de datos
 
@@ -314,7 +317,10 @@ def getBookByTitle(catalog, title):
     """
     Completar la descripcion de getBookByTitle
     """
-    pass
+    title = mp.get(catalog['title'], title)
+    if title:
+        return me.getValue(title)['books']
+    return None
 
 
 def booksSize(catalog):
@@ -435,4 +441,9 @@ def compareTitles(title1, title2):
     """
     Completar la descripcion de compareTitles
     """
-    pass
+    if (title1 == title2):
+        return 0
+    elif (title1 > title2):
+        return 1
+    else:
+        return -1
