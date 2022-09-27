@@ -60,7 +60,8 @@ def newCatalog():
                'authors': None,
                'tags': None,
                'tagIds': None,
-               'years': None}
+               'years': None,
+               'titles': None}
 
     """
     Esta lista contiene todo los libros encontrados
@@ -121,7 +122,7 @@ def newCatalog():
     La columna 'titles' del archivo books.csv
     """
     # TODO lab 6, agregar el ADT map con newMap()
-    catalog['titles'] = mp.newMap(40,
+    catalog['titles'] = mp.newMap(34500,
                                  maptype='PROBING',
                                  loadfactor=0.5,
                                  comparefunction=compareTitles)
@@ -273,7 +274,9 @@ def addBookTitle(catalog, title):
     """
     Completar la descripcion de addBookTitle
     """
-    pass
+    entry = mp.get(catalog['titles'], title)
+    mp.put(catalog['titles'], me.getKey(entry), me.getValue(entry))
+
 
 
 # ==============================
@@ -349,7 +352,7 @@ def titlesSize(catalog):
     """
     Completar la descripcion de titlesSize
     """
-    pass
+    return mp.size(catalog['titles'])
 
 
 # ==============================

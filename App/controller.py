@@ -168,4 +168,4 @@ def titlesSize(ctrlr):
     """
     Completar la descripcion de titlesSize
     """
-    pass
+    return model.titlesSize(ctrlr['model'])
