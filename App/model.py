@@ -123,10 +123,10 @@ def newCatalog():
     """
     # TODO lab 6, agregar el ADT map con newMap()
     catalog['titles'] = mp.newMap(34500,
-                                 maptype='PROBING',
-                                 loadfactor=0.5,
+                                 maptype='CHAINING',
+                                 loadfactor=4,
                                  comparefunction=compareTitles)
-
+    
     return catalog
 
 # Funciones para creacion de datos
@@ -250,6 +250,7 @@ def addTag(catalog, tag):
     mp.put(catalog['tagIds'], tag['tag_id'], newtag)
 
 
+
 def addBookTag(catalog, tag):
     """
     Agrega una relación entre un libro y un tag.
@@ -276,6 +277,8 @@ def addBookTitle(catalog, title):
     """
     entry = mp.get(catalog['titles'], title)
     mp.put(catalog['titles'], me.getKey(entry), me.getValue(entry))
+    lt.addLast(catalog['titles'], title)
+
 
 
 
