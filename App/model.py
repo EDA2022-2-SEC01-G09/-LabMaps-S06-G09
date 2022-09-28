@@ -320,7 +320,7 @@ def getBookByTitle(catalog, title):
     """
     Completar la descripcion de getBookByTitle
     """
-    title = mp.get(catalog['title'], title)
+    title = mp.get(catalog['titles'], title)
     if title:
         return me.getValue(title)['books']
     return None

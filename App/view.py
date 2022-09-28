@@ -153,8 +153,6 @@ while True:
         print('Libros cargados: ' + str(controller.booksSize(ctrlr)))
         print('Autores cargados: ' + str(controller.authorsSize(ctrlr)))
         print('Géneros cargados: ' + str(controller.tagsSize(ctrlr)))
-        print(str(controller.titlesSize(ctrlr)))
-        print(ctrlr)
 
     elif int(inputs[0]) == 3:
         number = input("Buscando libros del año?: ")
@@ -176,7 +174,7 @@ while True:
         # controller.getBooksByTitle(ctrlr, title)
         # controller.titleSize(ctrlr)
         title = input("titulo a buscar: ")
-        titles = controller.getBooksByTittle(ctrlr, title)
+        titles = controller.getBooksByTitle(ctrlr, title)
         printBooksbyTitle(titles)
 
 
